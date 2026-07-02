@@ -215,14 +215,23 @@ def repair_legacy_schema(engine: Engine) -> None:
                         """
                     )
                 )
-                connection.execute(
-                    text(
-                        """
-                        ALTER TABLE assistant_conversations
-                        ADD COLUMN IF NOT EXISTS negotiated_unit_price DECIMAL(10, 2) NULL
-                        """
+                # MySQL does not support ADD COLUMN IF NOT EXISTS — check manually
+                ac_columns = {
+                    row[0]
+                    for row in connection.execute(
+                        text(
+                            "SELECT column_name FROM information_schema.columns "
+                            "WHERE table_schema = DATABASE() AND table_name = 'assistant_conversations'"
+                        )
                     )
-                )
+                }
+                if "negotiated_unit_price" not in ac_columns:
+                    connection.execute(
+                        text(
+                            "ALTER TABLE assistant_conversations "
+                            "ADD COLUMN negotiated_unit_price DECIMAL(10, 2) NULL"
+                        )
+                    )
                 connection.execute(
                     text(
                         """

@@ -11,6 +11,8 @@ import ProfilePage from "../pages/ProfilePage";
 import WishlistPage from "../pages/WishlistPage";
 import AdminDashboardPage from "../pages/AdminDashboardPage";
 import AdminBookManagerPage from "../pages/AdminBookManagerPage";
+import AdminUsersPage from "../pages/AdminUsersPage";
+import AdminSessionsPage from "../pages/AdminSessionsPage";
 import ProtectedRoute from "../components/ProtectedRoute";
 
 export default function AppRoutes({ onOpenAssistant, onSelectBook }) {
@@ -31,6 +33,8 @@ export default function AppRoutes({ onOpenAssistant, onSelectBook }) {
       <Route element={<ProtectedRoute allowedRoles={["admin"]} />}>
         <Route path="/admin" element={<AdminDashboardPage />} />
         <Route path="/admin/books" element={<AdminBookManagerPage />} />
+        <Route path="/admin/users" element={<AdminUsersPage />} />
+        <Route path="/admin/sessions" element={<AdminSessionsPage />} />
       </Route>
     </Routes>
   );

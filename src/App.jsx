@@ -7,6 +7,7 @@ import { fetchCurrentUser } from "./features/auth/authSlice";
 import { fetchCart } from "./features/cart/cartSlice";
 import { fetchWishlist } from "./features/wishlist/wishlistSlice";
 import BookstoreAssistantWidget from "./components/BookstoreAssistantWidget";
+import AdminChatbotWidget from "./components/AdminChatbotWidget";
 
 export default function App() {
   const dispatch = useDispatch();
@@ -37,7 +38,10 @@ export default function App() {
         />
       </main>
       <Footer />
-      <BookstoreAssistantWidget openSignal={assistantSignal} selectedBook={selectedBook} />
+      {user?.role === "admin"
+        ? <AdminChatbotWidget />
+        : <BookstoreAssistantWidget openSignal={assistantSignal} selectedBook={selectedBook} />
+      }
     </div>
   );
 }

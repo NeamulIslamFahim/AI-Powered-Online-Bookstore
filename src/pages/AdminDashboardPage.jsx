@@ -60,9 +60,15 @@ export default function AdminDashboardPage() {
             <p>Use the separate admin email and password to enter this panel.</p>
             <p>Manage books, inspect sales, and monitor business performance with one account.</p>
           </div>
-          <div className="mt-6">
-            <Link to="/admin/books" className="btn-secondary">
+          <div className="mt-6 flex flex-wrap gap-3">
+            <Link to="/admin/books" className="btn-secondary text-center flex-1">
               Manage Book Catalog
+            </Link>
+            <Link to="/admin/users" className="btn-secondary text-center flex-1">
+              Manage Users
+            </Link>
+            <Link to="/admin/sessions" className="btn-secondary text-center flex-1">
+              View Sessions
             </Link>
           </div>
         </div>
