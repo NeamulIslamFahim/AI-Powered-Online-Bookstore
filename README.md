@@ -10,22 +10,24 @@
 ## Structure
 
 ```text
-app/
-  core/
-  db/
-  models/
-  routers/
-  schemas/
-  services/
-  utils/
-src/
-  api/
+backend/
+  .env
+  .env.example
   app/
-  components/
-  features/
-  pages/
-  routes/
-server/schema.sql
+  requirements.txt
+  server/
+n8n/
+  N8N_ASSISTANT_INTEGRATION.md
+frontend/
+  index.html
+  package.json
+  package-lock.json
+  postcss.config.js
+  tailwind.config.js
+  vite.config.js
+  src/
+  dist/
+  node_modules/
 ```
 
 ## Setup
@@ -35,34 +37,30 @@ server/schema.sql
 Run:
 
 ```bash
-mysql -u root -p < server/schema.sql
+mysql -u root -p < backend/server/schema.sql
 ```
 
 ### Backend
 
 ```bash
+cd backend
 python -m venv .venv
 .venv\\Scripts\\activate
 pip install -r requirements.txt
 python -m uvicorn app.main:app --host 127.0.0.1 --port 4001 --reload
 ```
 
-Or use the matching package script:
-
-```bash
-npm run server:dev
-```
-
 ### Frontend
 
 ```bash
+cd frontend
 npm install
 npm run dev
 ```
 
 ## Environment
 
-Copy `.env.example` to `.env` and update values.
+Copy `backend/.env.example` to `backend/.env` and update values.
 
 Required backend keys:
 
@@ -95,7 +93,7 @@ The backend expects a JSON response with a reply in one of these fields:
 - `message`
 - `output`
 
-See [N8N_ASSISTANT_INTEGRATION.md](c:\Users\FAHIM\OneDrive\Desktop\Online Bookstore\docs\N8N_ASSISTANT_INTEGRATION.md) for a concrete request/response contract and a ready-to-copy n8n Code node example.
+See `n8n/N8N_ASSISTANT_INTEGRATION.md` for a concrete request/response contract and a ready-to-copy n8n Code node example.
 
 ## API
 

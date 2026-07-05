@@ -1,4 +1,17 @@
-node_modules
-dist
+# Environment
 .env
-.env.example
+backend/.env
+backend/.env.example
+
+# Python
+__pycache__/
+backend/.venv
+venv/
+
+# Node
+node_modules/
+frontend/node_modules
+
+dist/
+frontend/dist
+.sql
