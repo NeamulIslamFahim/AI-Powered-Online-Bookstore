@@ -14,4 +14,4 @@ frontend/node_modules
 
 dist/
 frontend/dist
-.sql
+backend/server
