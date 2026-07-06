@@ -1,17 +1,43 @@
-# Environment
+# Environment / secrets
 .env
+.env.*
+*.env
 backend/.env
 backend/.env.example
+backend/.env.local
+backend/.env.production
+backend/.env.development
+frontend/.env
+frontend/.env.local
+frontend/.env.production
+frontend/.env.development
 
 # Python
 __pycache__/
-backend/.venv
+*.py[cod]
+*.pyo
+*.pyd
+backend/.venv/
 venv/
 
 # Node
 node_modules/
-frontend/node_modules
-
+frontend/node_modules/
+frontend/dist/
 dist/
-frontend/dist
-backend/server
+
+# Build / runtime artifacts
+build/
+coverage/
+*.log
+
+# Database / local data
+backend/server/
+*.sqlite
+*.db
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
